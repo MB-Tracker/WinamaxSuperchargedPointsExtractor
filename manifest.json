@@ -9,7 +9,7 @@
     "128": "icons/icon128.png"
   },
   "permissions": [
-    "storage", 
+    "storage",
     "activeTab"
   ],
   "host_permissions": [
@@ -20,19 +20,41 @@
     "default_title": "Supercharged Points Monitor"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "info@mb-tracker.com",
+      "data_collection_permissions": {
+        "required": [
+          "websiteContent"
+        ]
+      }
+    }
   },
   "content_scripts": [
     {
-      "matches": ["*://*.winamax.de/*", "*://*.winamax.fr/*"], 
-      "js": ["content.js"],
+      "matches": [
+        "*://*.winamax.de/*",
+        "*://*.winamax.fr/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_start"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["injected.js"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "injected.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }

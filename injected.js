@@ -2,7 +2,7 @@
   "use strict";
 
   const KEY = "supercharged";
-  const DEBUG = false;
+  const DEBUG = true;
 
   function checkPayload(str) {
     if (!str.includes(KEY)) return;
@@ -40,7 +40,7 @@
         const value = originalGetter.call(this);
         try {
           if (typeof value === "string") checkPayload(value);
-        } catch (e) {}
+        } catch (e) { }
         return value;
       },
       configurable: true,

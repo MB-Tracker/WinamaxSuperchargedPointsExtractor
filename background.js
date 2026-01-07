@@ -1,14 +1,14 @@
 const API_ENDPOINT =
   "https://mb-tracker.com/api/misc/winamax-supercharged-points/points/add/";
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action !== "PROCESS_POINTS") {
     return true; // Not our action, ignore
   }
 
   const pointsData = request.data;
 
-  chrome.storage.sync.get(["sc_last_points", "sc_api_key"], (result) => {
+  browser.storage.sync.get(["sc_last_points", "sc_api_key"], (result) => {
     const lastPoints = result.sc_last_points;
     if (lastPoints && lastPoints === pointsData.points) {
       console.log("[SC-Bg] Points unchanged since last submission. Skipping.");
@@ -36,7 +36,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       .then((response) => {
         if (response.ok) {
           console.log("[SC-Bg] Data sent successfully");
-          chrome.storage.sync.set({
+          browser.storage.sync.set({
             sc_last_points: pointsData.points,
             sc_last_update: Date.now(),
           });

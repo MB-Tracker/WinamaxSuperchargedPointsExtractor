@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const saveBtn = document.getElementById("saveBtn");
   const statusMsg = document.getElementById("statusMsg");
 
-  chrome.storage.sync.get(
+  browser.storage.sync.get(
     ["sc_last_points", "sc_last_update", "sc_api_key"],
     (data) => {
       if (data.sc_last_points !== undefined) {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : "⚙️ Configure API Key";
   });
 
-  chrome.storage.sync.get(["sc_api_key"], (data) => {
+  browser.storage.sync.get(["sc_api_key"], (data) => {
     if (!data.sc_api_key) {
       toggleBtn.click();
     }
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    chrome.storage.sync.set({ sc_api_key: key }, () => {
+    browser.storage.sync.set({ sc_api_key: key }, () => {
       statusMsg.textContent = "Saved successfully!";
       statusMsg.style.color = "#00ff88";
 
