@@ -2,7 +2,7 @@
   "use strict";
 
   const KEY = "supercharged";
-  const DEBUG = true;
+  const DEBUG = false;
 
   function checkPayload(str) {
     if (!str.includes(KEY)) return;
