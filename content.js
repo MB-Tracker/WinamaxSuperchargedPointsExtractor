@@ -1,4 +1,5 @@
 (() => {
+  const browser = globalThis.browser || globalThis.chrome;
   const script = document.createElement("script");
   script.src = browser.runtime.getURL("injected.js");
   script.onload = function () {

@@ -1,4 +1,7 @@
+const browser = globalThis.browser || globalThis.chrome;
 document.addEventListener("DOMContentLoaded", () => {
+  const pointsDisplay30Days = document.getElementById("pointsDisplay30Days");
+  const timeDisplay30Days = document.getElementById("timeDisplay30Days");
   const pointsDisplay = document.getElementById("pointsDisplay");
   const timeDisplay = document.getElementById("timeDisplay");
   const toggleBtn = document.getElementById("toggleSettings");
@@ -8,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const statusMsg = document.getElementById("statusMsg");
 
   browser.storage.sync.get(
-    ["sc_last_points", "sc_last_update", "sc_api_key"],
+    ["sc_last_points", "sc_last_update", "sc_api_key", "sc_30_days_points", "sc_30_days_update"],
     (data) => {
       if (data.sc_last_points !== undefined) {
         pointsDisplay.textContent = data.sc_last_points;
@@ -17,8 +20,51 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (data.sc_last_update) {
-        const date = new Date(data.sc_last_update);
-        timeDisplay.textContent = "Last update: " + date.toLocaleTimeString();
+        const date = new Date(data.sc_last_update * 1000);
+        timeDisplay.textContent = date.toLocaleDateString(
+          undefined,
+          {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          }
+        );
+      }
+
+      if (data.sc_30_days_points !== undefined) {
+        pointsDisplay30Days.textContent = data.sc_30_days_points;
+        if (data.sc_30_days_points >= 100) {
+          pointsDisplay30Days.style.color = "var(--accent)";
+        } else {
+          pointsDisplay30Days.style.color = "var(--danger)";
+        }
+      } else {
+        pointsDisplay30Days.textContent = "--.--";
+      }
+
+      if (data.sc_30_days_update) {
+        const date = new Date(data.sc_30_days_update * 1000);
+        timeDisplay30Days.textContent = "Will change on: " + date.toLocaleDateString(
+          undefined,
+          {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          }
+        );
+
+        if (data.sc_30_days_update < Date.now()) {
+          browser.runtime.sendMessage({
+            action: "update_points",
+            api_key: data.sc_api_key,
+          });
+        }
       }
 
       if (data.sc_api_key) {

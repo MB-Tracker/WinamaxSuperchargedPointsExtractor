@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Supercharged Monitor</title>
@@ -37,7 +38,7 @@
             padding: 20px 0;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             border: 1px solid #333;
             margin-bottom: 20px;
         }
@@ -58,6 +59,17 @@
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
             margin: 0;
             line-height: 1;
+        }
+        
+        .points-value.secondary {
+            font-size: 22px;
+            color: var(--accent2);
+        }
+
+        .points-value.dim {
+            color: var(--text-dim);
+            /* space chars */
+            letter-spacing: 2px;
         }
 
         .timestamp {
@@ -93,7 +105,8 @@
         }
 
         .settings-area.open {
-            height: 140px; /* Adjust based on content */
+            height: 140px;
+            /* Adjust based on content */
             border: 1px solid #333;
             margin-top: 5px;
         }
@@ -102,7 +115,8 @@
             padding: 15px;
         }
 
-        input[type="password"], input[type="text"] {
+        input[type="password"],
+        input[type="text"] {
             width: 100%;
             background: #2a2a2a;
             border: 1px solid #444;
@@ -110,7 +124,8 @@
             padding: 10px;
             border-radius: 6px;
             margin-bottom: 10px;
-            box-sizing: border-box; /* Fix padding width issue */
+            box-sizing: border-box;
+            /* Fix padding width issue */
         }
 
         input:focus {
@@ -159,19 +174,31 @@
             transition: text-decoration 0.2s;
         }
 
-        .view-graph:hover, .get-api-link:hover {
+        .view-graph:hover,
+        .get-api-link:hover {
             text-decoration: underline;
+        }
+
+        hr {
+            border: 1px solid #333;
+            margin: 5px 0;
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        
+
         <div class="points-card">
+            <div class="label">30 Days Points</div>
+            <div class="points-value" id="pointsDisplay30Days">--.--</div>
+            <div class="timestamp" id="timeDisplay30Days">Waiting for data...</div>
+            <hr>
             <div class="label">Current Points</div>
-            <div class="points-value" id="pointsDisplay">--.--</div>
+            <div class="points-value secondary" id="pointsDisplay">--.--</div>
             <div class="timestamp" id="timeDisplay">Waiting for data...</div>
+            <hr>
             <a href="https://mb-tracker.com/misc/winamax-supercharged-points/" target="_blank" class="view-graph">
                 View Graph on MB-Tracker.com
             </a>
@@ -197,4 +224,5 @@
 
     <script src="popup.js"></script>
 </body>
+
 </html>
