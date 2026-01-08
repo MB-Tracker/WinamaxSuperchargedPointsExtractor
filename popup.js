@@ -14,7 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ["sc_last_points", "sc_last_update", "sc_api_key", "sc_30_days_points", "sc_30_days_update"],
     (data) => {
       if (data.sc_last_points !== undefined) {
-        pointsDisplay.textContent = data.sc_last_points;
+        pointsDisplay.textContent = data.sc_last_points.toLocaleString(
+          undefined,
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }
+        );
       } else {
         pointsDisplay.textContent = "--.--";
       }
@@ -35,7 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (data.sc_30_days_points !== undefined) {
-        pointsDisplay30Days.textContent = data.sc_30_days_points;
+        pointsDisplay30Days.textContent = data.sc_30_days_points.toLocaleString(
+          undefined,
+          {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          }
+        );
         if (data.sc_30_days_points >= 100) {
           pointsDisplay30Days.style.color = "var(--accent)";
         } else {
