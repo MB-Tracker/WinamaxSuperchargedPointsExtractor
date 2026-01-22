@@ -1,6 +1,8 @@
 # Winamax Supercharged Points Extractor
 _by MB-Tracker_
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/mbtracker)
+
 ---
 
 A browser extension that extracts the Supercharged points from Winamax and sends them to MB-Tracker for tracking and analysis.
