@@ -15,7 +15,7 @@ A browser extension that extracts the Supercharged points from Winamax and sends
 - User-friendly popup for configuration
 
 ![Popup Preview](imgs/extension_preview.png)
-Example of the extension popup displaying current and 30-day Supercharged points.
+> Example of the extension popup displaying current and 30-day Supercharged points.
   
 ## Installation
 
