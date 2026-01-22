@@ -13,6 +13,9 @@ A browser extension that extracts the Supercharged points from Winamax and sends
 - Automatically finds your current Supercharged points
 - Sends data to MB-Tracker via a secure API
 - User-friendly popup for configuration
+
+![Popup Preview](imgs/extension_preview.png)
+Example of the extension popup displaying current and 30-day Supercharged points.
   
 ## Installation
 
