@@ -16,6 +16,13 @@ A browser extension that extracts the Supercharged points from Winamax and sends
 - Sends data to MB-Tracker via a secure API
 - User-friendly popup for configuration
 
+> [!NOTE]  
+> It can take up to 30 days of usage, before the "30 DAYS POINTS" value is populated fully on MB-Tracker, as there is no way to get historical data from Winamax directly.
+> So please be patient after installing the extension for the first time.
+> 
+> _If you have manually used the tracker on MB-Tracker before, the extension will use that historical data automatically._
+
+
 ![Popup Preview](imgs/extension_preview.png)
 > Example of the extension popup displaying current and 30-day Supercharged points.
   
